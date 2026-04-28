@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>OpsPilot</title>
+  <script>
+    // Redirect all 404s back into the SPA so React Router can handle them.
+    // Stores the intended path in sessionStorage, then redirects to the base.
+    var repo = '/OpsPilotWebApp_v5';
+    var path = window.location.pathname.replace(repo, '') || '/';
+    sessionStorage.setItem('ghpages_redirect', path + window.location.search + window.location.hash);
+    window.location.replace(repo + '/');
+  </script>
+</head>
+</html>
