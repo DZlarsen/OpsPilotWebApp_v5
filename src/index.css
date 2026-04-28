@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  :root {
+    /* ═══ Industrial Blueprint Palette ═══
+       Graphite base, bone-paper surfaces, drafting cyan accent,
+       warning amber secondary. Dominant colors, sharp accents. */
+
+    --background: 218 24% 8%;           /* graphite */
+    --foreground: 40 25% 90%;           /* bone white */
+
+    --card: 218 22% 11%;                /* slightly lifted graphite */
+    --card-foreground: 40 25% 90%;
+
+    --popover: 218 22% 13%;
+    --popover-foreground: 40 25% 90%;
+
+    --primary: 190 95% 55%;             /* drafting cyan */
+    --primary-foreground: 218 24% 8%;
+
+    --secondary: 218 16% 17%;
+    --secondary-foreground: 40 20% 82%;
+
+    --muted: 218 15% 15%;
+    --muted-foreground: 218 10% 58%;
+
+    --accent: 32 95% 58%;               /* warning amber */
+    --accent-foreground: 218 24% 8%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 218 14% 20%;
+    --input: 218 14% 20%;
+    --ring: 190 95% 55%;
+
+    --radius: 0.25rem;                  /* tight corners — drafting feel */
+
+    /* Status colors */
+    --status-ok: 150 65% 48%;
+    --status-ok-foreground: 150 65% 88%;
+    --status-ok-bg: 150 65% 48%;
+    --status-warning: 32 95% 58%;
+    --status-warning-foreground: 32 95% 90%;
+    --status-warning-bg: 32 95% 58%;
+    --status-critical: 0 72% 55%;
+    --status-critical-foreground: 0 72% 90%;
+    --status-critical-bg: 0 72% 55%;
+
+    /* Chart colors */
+    --chart-blue: 190 95% 55%;
+    --chart-green: 150 65% 48%;
+    --chart-amber: 32 95% 58%;
+    --chart-red: 0 72% 55%;
+    --chart-purple: 280 55% 65%;
+    --chart-cyan: 190 95% 55%;
+    --chart-line: 190 95% 55%;
+    --chart-ucl: 0 72% 55%;
+    --chart-lcl: 0 72% 55%;
+    --chart-cl: 150 65% 48%;
+
+    /* Blueprint-specific tokens */
+    --blueprint-ink: 40 30% 82%;        /* draft-pen color on dark */
+    --blueprint-ink-dim: 40 15% 55%;
+    --blueprint-grid: 190 40% 45%;      /* faint cyan grid */
+    --blueprint-paper: 42 38% 88%;      /* bone paper */
+    --blueprint-paper-deep: 35 25% 78%;
+
+    --sidebar-background: 218 26% 6%;
+    --sidebar-foreground: 40 15% 72%;
+    --sidebar-primary: 190 95% 55%;
+    --sidebar-primary-foreground: 218 24% 8%;
+    --sidebar-accent: 218 18% 13%;
+    --sidebar-accent-foreground: 40 25% 90%;
+    --sidebar-border: 218 16% 15%;
+    --sidebar-ring: 190 95% 55%;
+
+    --font-sans: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+    --font-body: 'Geist', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-display: 'Geist', system-ui, sans-serif;
+  }
+
+  .light {
+    --background: 42 38% 94%;           /* drafting paper */
+    --foreground: 218 28% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 218 28% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 28% 14%;
+
+    --primary: 200 95% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 42 20% 88%;
+    --secondary-foreground: 218 20% 24%;
+
+    --muted: 42 18% 90%;
+    --muted-foreground: 218 12% 42%;
+
+    --accent: 20 80% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 42 12% 78%;
+    --input: 42 12% 78%;
+    --ring: 200 95% 38%;
+
+    --status-ok: 150 65% 35%;
+    --status-ok-foreground: 150 65% 20%;
+    --status-ok-bg: 150 65% 35%;
+    --status-warning: 32 92% 45%;
+    --status-warning-foreground: 32 92% 28%;
+    --status-warning-bg: 32 92% 45%;
+    --status-critical: 0 72% 51%;
+    --status-critical-foreground: 0 72% 38%;
+    --status-critical-bg: 0 72% 51%;
+
+    --chart-blue: 200 95% 38%;
+    --chart-green: 150 65% 35%;
+    --chart-amber: 32 92% 45%;
+    --chart-red: 0 72% 51%;
+    --chart-purple: 270 55% 50%;
+    --chart-cyan: 190 90% 40%;
+    --chart-line: 200 95% 38%;
+    --chart-ucl: 0 72% 51%;
+    --chart-lcl: 0 72% 51%;
+    --chart-cl: 150 65% 35%;
+
+    --blueprint-ink: 218 28% 14%;
+    --blueprint-ink-dim: 218 12% 42%;
+    --blueprint-grid: 200 40% 55%;
+    --blueprint-paper: 42 38% 94%;
+    --blueprint-paper-deep: 35 25% 86%;
+
+    --sidebar-background: 42 28% 90%;
+    --sidebar-foreground: 218 20% 30%;
+    --sidebar-primary: 200 95% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 42 20% 84%;
+    --sidebar-accent-foreground: 218 28% 14%;
+    --sidebar-border: 42 12% 76%;
+    --sidebar-ring: 200 95% 38%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    font-feature-settings: 'ss01', 'ss02', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+    font-feature-settings: 'ss01', 'ss02', 'zero';
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+    font-feature-settings: 'ss01', 'cv01';
+    letter-spacing: -0.02em;
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
+
+@layer components {
+  /* ═══ Blueprint card ═══ */
+  .kpi-card {
+    @apply relative bg-card border border-border p-4 transition-all duration-200 hover:border-primary/40;
+    border-radius: var(--radius);
+  }
+
+  /* Cards that want reveal-on-hover corner ticks (blueprint signature) */
+  .bp-ticks {
+    position: relative;
+  }
+  .bp-ticks::before,
+  .bp-ticks::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid hsl(var(--primary));
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+  }
+  .bp-ticks::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .bp-ticks::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+  .bp-ticks:hover::before,
+  .bp-ticks:hover::after,
+  .bp-ticks.is-active::before,
+  .bp-ticks.is-active::after { opacity: 1; }
+
+  /* ═══ Status chips — square, mono, tight ═══ */
+  .status-badge-ok,
+  .status-badge-warning,
+  .status-badge-critical {
+    @apply inline-flex items-center gap-1.5 px-1.5 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-[0.08em];
+    border-radius: 2px;
+    border: 1px solid transparent;
+  }
+  .status-badge-ok {
+    background: hsl(var(--status-ok) / 0.1);
+    color: hsl(var(--status-ok));
+    border-color: hsl(var(--status-ok) / 0.25);
+  }
+  .status-badge-warning {
+    background: hsl(var(--status-warning) / 0.1);
+    color: hsl(var(--status-warning));
+    border-color: hsl(var(--status-warning) / 0.25);
+  }
+  .status-badge-critical {
+    background: hsl(var(--status-critical) / 0.1);
+    color: hsl(var(--status-critical));
+    border-color: hsl(var(--status-critical) / 0.25);
+  }
+
+  /* ═══ Data tables ═══ */
+  .data-table {
+    @apply w-full text-sm;
+  }
+
+  .data-table th {
+    @apply text-left text-muted-foreground font-mono font-semibold text-[10px] uppercase tracking-[0.15em] py-2.5 px-4 border-b border-border bg-card/40;
+  }
+
+  .data-table td {
+    @apply py-2.5 px-4 border-b border-border/50;
+  }
+
+  .data-table tr:hover td {
+    @apply bg-secondary/40;
+  }
+
+  /* ═══ Section eyebrow / header ═══ */
+  .section-header {
+    @apply text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-3;
+  }
+
+  /* ═══ Page header pattern (callout + eyebrow + title) ═══ */
+  .page-title {
+    @apply font-display text-3xl sm:text-4xl leading-[1.05] tracking-tight;
+  }
+  .page-eyebrow {
+    @apply font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground;
+  }
+  .page-callout {
+    @apply inline-flex items-center justify-center h-6 w-6 font-mono text-[10px] font-bold flex-shrink-0;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 50%;
+    border: 2px solid hsl(var(--background));
+    box-shadow: 0 0 0 1px hsl(var(--primary));
+  }
+
+  /* ═══ KPI tile — display type numeric ═══ */
+  .bp-tile-label {
+    @apply font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground;
+  }
+  .bp-tile-value {
+    @apply font-display text-3xl leading-none text-foreground tabular-nums;
+  }
+  .bp-tile-delta {
+    @apply font-mono text-[10px] tabular-nums flex items-center gap-1;
+  }
+
+  /* ═══ Mono kbd ═══ */
+  .bp-kbd {
+    @apply font-mono text-[10px] px-1.5 py-0.5 border border-border bg-secondary/60 text-muted-foreground;
+    border-radius: 2px;
+  }
+
+  /* ═══ Chip: non-status tag (replaces rounded-full badges) ═══ */
+  .bp-chip {
+    @apply inline-flex items-center gap-1 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider border border-border bg-secondary/50 text-muted-foreground;
+    border-radius: 2px;
+  }
+  .bp-chip-primary {
+    @apply text-primary border-primary/40 bg-primary/5;
+  }
+  .bp-chip-accent {
+    @apply text-accent border-accent/40 bg-accent/5;
+  }
+}
+
+/* ═══ Override shadcn primitive defaults to match blueprint ═══ */
+/* Badge default is rounded-full; we want square. Apply narrowly via bp wrapper. */
+.bp-scope [data-radix-slot] { border-radius: var(--radius); }
+
+/* ═══ Blueprint Utilities ═══ */
+
+.bp-grid {
+  background-image:
+    linear-gradient(hsl(var(--blueprint-grid) / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--blueprint-grid) / 0.04) 1px, transparent 1px),
+    linear-gradient(hsl(var(--blueprint-grid) / 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--blueprint-grid) / 0.09) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+  background-position: -1px -1px;
+}
+
+.bp-grid-subtle {
+  background-image:
+    linear-gradient(hsl(var(--blueprint-grid) / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--blueprint-grid) / 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bp-paper {
+  background: hsl(var(--blueprint-paper));
+  color: hsl(218 28% 14%);
+}
+
+.bp-paper-texture {
+  background-color: hsl(var(--blueprint-paper));
+  background-image:
+    radial-gradient(circle at 20% 30%, hsl(var(--blueprint-paper-deep) / 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, hsl(var(--blueprint-paper-deep) / 0.3) 0%, transparent 40%);
+  color: hsl(218 28% 14%);
+}
+
+.bp-corner-tl::before,
+.bp-corner-tr::before,
+.bp-corner-bl::before,
+.bp-corner-br::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: hsl(var(--primary));
+  border-style: solid;
+  border-width: 0;
+}
+.bp-corner-tl::before { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.bp-corner-tr::before { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
+.bp-corner-bl::before { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
+.bp-corner-br::before { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* callout number chip */
+.bp-callout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  border: 2px solid hsl(var(--background));
+  box-shadow: 0 0 0 1px hsl(var(--primary));
+  flex-shrink: 0;
+}
+
+/* title block style for engineering drawings */
+.bp-title-block {
+  border: 1px solid hsl(var(--border));
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  background: hsl(var(--card));
+}
+.bp-title-block .tb-row {
+  padding: 6px 10px;
+  border-bottom: 1px solid hsl(var(--border));
+}
+.bp-title-block .tb-row:last-child { border-bottom: none; }
+.bp-title-block .label {
+  font-size: 8px;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  letter-spacing: 0.15em;
+  margin-bottom: 2px;
+}
+.bp-title-block .value {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+/* Blinking status dot — industrial */
+@keyframes bp-blink {
+  0%, 60%, 100% { opacity: 1; }
+  65%, 95% { opacity: 0.25; }
+}
+.bp-blink { animation: bp-blink 2.4s ease-in-out infinite; }
+
+/* Scanning ticker line */
+@keyframes bp-scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.bp-scan-line {
+  animation: bp-scan 4s linear infinite;
+}
+
+@keyframes bp-measure-flash {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+.bp-measure-flash { animation: bp-measure-flash 3s ease-in-out infinite; }
+
+/* Marquee (for ticker strip) */
+@keyframes bp-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.bp-marquee {
+  animation: bp-marquee 60s linear infinite;
+}
+
+/* ═══ Taskmaster-specific styles (retuned to blueprint) ═══ */
+.taskmaster-page {
+  position: relative;
+}
+
+.taskmaster-console {
+  @apply px-4 py-2.5 border font-mono;
+  background: hsl(var(--card));
+  border-color: hsl(var(--primary) / 0.2);
+  border-radius: 2px;
+  box-shadow: inset 0 1px 0 hsl(var(--primary) / 0.05);
+}
+
+.taskmaster-cursor {
+  display: inline-block;
+  color: hsl(var(--primary));
+  font-weight: bold;
+  animation: taskmaster-blink 1s step-end infinite;
+}
+
+@keyframes taskmaster-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.taskmaster-gradient-border {
+  position: relative;
+}
+
+.taskmaster-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.4),
+    transparent 40%,
+    transparent 60%,
+    hsl(var(--accent) / 0.3)
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  animation: taskmaster-border-shift 6s ease-in-out infinite;
+}
+
+@keyframes taskmaster-border-shift {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.taskmaster-scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    hsl(var(--primary) / 0.02) 3px,
+    hsl(var(--primary) / 0.02) 4px
+  );
+}
+
+/* Custom scrollbar — industrial */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.4);
+}
+
+/* Selection */
+::selection {
+  background: hsl(var(--primary) / 0.25);
+  color: hsl(var(--foreground));
+}
